@@ -1,0 +1,1355 @@
+[
+    {
+        "run_time": "2026-04-25T03:28:39.618057",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.01
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.499293",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.508127",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.523484",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.535394",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.545820",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.559949",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.567801",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.577455",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.584629",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:28:39.596596",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:30:55.567288",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.01
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.461980",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.469493",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.477784",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.485710",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.500144",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.511302",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.522914",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.538011",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.545221",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:30:55.559321",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:31:40.043126",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.0
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:39.972250",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:39.983120",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:39.989252",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:39.999438",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:40.004907",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:40.010179",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:40.015187",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:40.019180",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:40.022939",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:40.026778",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:31:45.623794",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.01
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.507751",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.522632",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.530054",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.537236",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.550056",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.560767",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.566453",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.571546",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.579426",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:31:45.584471",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:32:42.896029",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.0
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.837332",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.844206",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.849949",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.856400",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.861450",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.866049",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.869464",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.872665",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.877006",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:32:42.880156",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:36:00.947519",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.0
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.891767",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.897979",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.903529",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.908023",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.913553",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.918228",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.921633",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.924824",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.928352",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:36:00.931939",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:39:17.618839",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.01
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.517640",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.528822",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.537439",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.545983",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.555335",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.562915",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.575240",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.579812",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.003,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.589077",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:39:17.594548",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:43:53.946183",
+        "summary": {
+            "total": 0,
+            "passed": 0,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0
+        },
+        "tests": []
+    },
+    {
+        "run_time": "2026-04-25T03:46:02.285693",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.0
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.225099",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.232685",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.237824",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.242595",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.247129",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.254531",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.257977",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.261101",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.264513",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:46:02.268264",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:47:31.742623",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.02
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.536458",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.618016",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.630752",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.640270",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.015,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.673517",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.682462",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.002,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.690405",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.697824",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.704662",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:47:31.712598",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:48:50.035572",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.0
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:49.970425",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:49.976535",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:49.981426",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.001,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:49.987250",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:49.994135",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:49.998676",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:50.002140",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:50.005277",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:50.012395",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:48:50.015678",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    },
+    {
+        "run_time": "2026-04-25T03:57:14.207545",
+        "summary": {
+            "total": 10,
+            "passed": 10,
+            "failed": 0,
+            "skipped": 0,
+            "duration": 0.0
+        },
+        "tests": [
+            {
+                "name": "tests/agent/test_agent_flow.py::test_model_valid_input",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.144706",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case0]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.150859",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case1]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.156606",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case2]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.161943",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_model_integration.py::test_model_integration[case3]",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.168280",
+                "markers": [
+                    "parametrize",
+                    "api",
+                    "regression"
+                ]
+            },
+            {
+                "name": "tests/integration/test_patient_safety.py::test_no_blank_symptoms",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.172659",
+                "markers": [
+                    "critical"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_valid_patient",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.176912",
+                "markers": [
+                    "critical",
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/model/test_model_validation.py::test_invalid_age_type",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.180249",
+                "markers": [
+                    "api"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_invalid_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.186307",
+                "markers": [
+                    "ui"
+                ]
+            },
+            {
+                "name": "tests/ui/test_ui_validation.py::test_large_file_upload",
+                "duration": 0.0,
+                "status": "passed",
+                "error": null,
+                "timestamp": "2026-04-25T03:57:14.189385",
+                "markers": [
+                    "ui"
+                ]
+            }
+        ]
+    }
+]

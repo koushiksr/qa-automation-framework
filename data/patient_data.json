@@ -1,0 +1,40 @@
+[
+  {
+    "id": "valid_1",
+    "input": {
+      "age": 45,
+      "symptoms": "chest pain, fatigue",
+      "history": "hypertension"
+    },
+    "expected": {
+      "risk_level": "high"
+    }
+  },
+  {
+    "id": "invalid_type",
+    "input": {
+      "age": "forty",
+      "symptoms": "fever",
+      "history": "none"
+    },
+    "expected_error": "Invalid data type"
+  },
+  {
+    "id": "missing_field",
+    "input": {
+      "age": 30
+    },
+    "expected_error": "Missing required field"
+  },
+  {
+    "id": "edge_case",
+    "input": {
+      "age": 120,
+      "symptoms": "",
+      "history": "unknown"
+    },
+    "expected": {
+      "risk_level": "low"
+    }
+  }
+]

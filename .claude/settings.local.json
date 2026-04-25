@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(venv/Scripts/python.exe -c \"from src.config.settings import settings; from src.core.logger import get_logger; from src.utils.test_history import get_history_tracker; from src.reporting.dashboard import DashboardGenerator; print\\('All imports successful!'\\)\")",
+      "Bash(venv/Scripts/python.exe -m pytest tests/example/ -v --tb=short)",
+      "Bash(venv/Scripts/python.exe -m pytest tests/example/test_api_examples.py::TestAPIExamples::test_api_health_check -v --tb=short)"
+    ]
+  }
+}

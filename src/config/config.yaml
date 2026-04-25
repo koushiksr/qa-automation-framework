@@ -1,0 +1,50 @@
+# Test Framework Configuration
+
+environment:
+  base_url: "http://localhost:8000"
+  api_timeout: 30
+  ui_timeout: 60
+
+logging:
+  level: "INFO"
+  console: true
+  file: true
+  log_dir: "reports/logs"
+  max_file_size_mb: 10
+  retention_days: 30
+  format: "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level: <8} | {name} | {function} | {message}"
+
+reporting:
+  html_report_dir: "reports/html"
+  history_file: "reports/history/test_history.json"
+  max_history_runs: 100
+  generate_dashboard: true
+
+execution:
+  default_markers: []
+  parallel_workers: 4
+  rerun_failures: 0
+  timeout_seconds: 300
+
+categories:
+  smoke:
+    description: "Quick validation tests"
+    timeout: 60
+  regression:
+    description: "Full suite regression tests"
+    timeout: 300
+  critical:
+    description: "High-risk patient safety tests"
+    timeout: 120
+  api:
+    description: "Model/backend API tests"
+    timeout: 90
+  ui:
+    description: "UI validation tests"
+    timeout: 120
+  integration:
+    description: "Integration tests"
+    timeout: 180
+  performance:
+    description: "Performance and load tests"
+    timeout: 600

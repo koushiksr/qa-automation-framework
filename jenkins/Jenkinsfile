@@ -1,0 +1,259 @@
+pipeline {
+    agent any
+
+    environment {
+        PYTHON_EXE = "C:\\Users\\dell\\Documents\\Autonomize AI\\qa_automation_framework\\venv\\Scripts\\python.exe"
+        PROJECT_DIR = "C:\\Users\\dell\\Documents\\Autonomize AI\\qa_automation_framework"
+        VENV_ACTIVATE = "C:\\Users\\dell\\Documents\\Autonomize AI\\qa_automation_framework\\venv\\Scripts\\activate.bat"
+
+        ALLURE_RESULTS = "reports\\allure-results"
+        ALLURE_REPORT = "reports\\allure-report"
+        HTML_REPORT = "reports\\html"
+        HISTORY_FILE = "reports\\history\\test_history.json"
+
+        ALLURE_PATH = "C:\\allure\\bin\\allure.bat"
+
+        // Quality gates
+        PASS_RATE_THRESHOLD = "80"
+        MAX_DURATION_SECONDS = "600"
+    }
+
+    options {
+        timestamps()
+        timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+
+    parameters {
+        choice(
+            name: 'TEST_SUITE',
+            choices: ['all', 'smoke', 'regression', 'critical', 'api', 'ui', 'integration'],
+            description: 'Select test suite to run'
+        )
+        booleanParam(name: 'PARALLEL_EXEC', defaultValue: true, description: 'Run tests in parallel')
+        booleanParam(name: 'GENERATE_DASHBOARD', defaultValue: true, description: 'Generate HTML dashboard')
+        string(name: 'PYTEST_ARGS', defaultValue: '-v', description: 'Additional pytest arguments')
+    }
+
+    stages {
+        stage('Initialize') {
+            steps {
+                script {
+                    env.WORKSPACE_CHECK = sh(
+                        script: 'dir',
+                        returnStdout: true
+                    ).trim()
+                    echo "Workspace initialized: ${env.WORKSPACE_DIR}"
+                }
+            }
+        }
+
+        stage('Setup Environment') {
+            steps {
+                bat '''
+                    echo ===== SETTING UP ENVIRONMENT =====
+                    "%PYTHON_EXE%" --version
+                    echo Python path: %PYTHON_EXE%
+                '''
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat '''
+                    echo ===== INSTALLING DEPENDENCIES =====
+                    "%PYTHON_EXE%" -m pip install --upgrade pip
+                    "%PYTHON_EXE%" -m pip install -r "%PROJECT_DIR%\\requirements.txt"
+                '''
+            }
+        }
+
+        stage('Clean Previous Reports') {
+            steps {
+                bat '''
+                    echo ===== CLEANING PREVIOUS REPORTS =====
+                    if exist "%PROJECT_DIR%\\%ALLURE_RESULTS%" rmdir /s /q "%PROJECT_DIR%\\%ALLURE_RESULTS%"
+                    if exist "%PROJECT_DIR%\\%ALLURE_REPORT%" rmdir /s /q "%PROJECT_DIR%\\%ALLURE_REPORT%"
+                    mkdir "%PROJECT_DIR%\\%ALLURE_RESULTS%"
+                '''
+            }
+        }
+
+        stage('Run Tests') {
+            parallel {
+                stage('Smoke Tests') {
+                    when {
+                        expression { params.TEST_SUITE == 'all' || params.TEST_SUITE == 'smoke' }
+                    }
+                    steps {
+                        bat '''
+                            echo ===== RUNNING SMOKE TESTS =====
+                            "%PYTHON_EXE%" -m pytest -v -m smoke ^
+                                --alluredir="%PROJECT_DIR%\\%ALLURE_RESULTS%" ^
+                                --html="%PROJECT_DIR%\\reports\\html\\smoke_report.html" ^
+                                --self-contained-html ^
+                                %PYTEST_ARGS%
+                        '''
+                    }
+                }
+
+                stage('API Tests') {
+                    when {
+                        expression { params.TEST_SUITE == 'all' || params.TEST_SUITE == 'api' }
+                    }
+                    steps {
+                        bat '''
+                            echo ===== RUNNING API TESTS =====
+                            "%PYTHON_EXE%" -m pytest -v -m api ^
+                                --alluredir="%PROJECT_DIR%\\%ALLURE_RESULTS%" ^
+                                --html="%PROJECT_DIR%\\reports\\html\\api_report.html" ^
+                                --self-contained-html ^
+                                %PYTEST_ARGS%
+                        '''
+                    }
+                }
+
+                stage('UI Tests') {
+                    when {
+                        expression { params.TEST_SUITE == 'all' || params.TEST_SUITE == 'ui' }
+                    }
+                    steps {
+                        bat '''
+                            echo ===== RUNNING UI TESTS =====
+                            "%PYTHON_EXE%" -m pytest -v -m ui ^
+                                --alluredir="%PROJECT_DIR%\\%ALLURE_RESULTS%" ^
+                                --html="%PROJECT_DIR%\\reports\\html\\ui_report.html" ^
+                                --self-contained-html ^
+                                %PYTEST_ARGS%
+                        '''
+                    }
+                }
+
+                stage('Integration Tests') {
+                    when {
+                        expression { params.TEST_SUITE == 'all' || params.TEST_SUITE == 'integration' }
+                    }
+                    steps {
+                        bat '''
+                            echo ===== RUNNING INTEGRATION TESTS =====
+                            "%PYTHON_EXE%" -m pytest -v -m integration ^
+                                --alluredir="%PROJECT_DIR%\\%ALLURE_RESULTS%" ^
+                                --html="%PROJECT_DIR%\\reports\\html\\integration_report.html" ^
+                                --self-contained-html ^
+                                %PYTEST_ARGS%
+                        '''
+                    }
+                }
+
+                stage('Regression Tests') {
+                    when {
+                        expression { params.TEST_SUITE == 'regression' }
+                    }
+                    steps {
+                        bat '''
+                            echo ===== RUNNING REGRESSION TESTS =====
+                            "%PYTHON_EXE%" -m pytest -v -m regression ^
+                                --alluredir="%PROJECT_DIR%\\%ALLURE_RESULTS%" ^
+                                --html="%PROJECT_DIR%\\reports\\html\\regression_report.html" ^
+                                --self-contained-html ^
+                                %PYTEST_ARGS%
+                        '''
+                    }
+                }
+
+                stage('Critical Tests') {
+                    when {
+                        expression { params.TEST_SUITE == 'all' || params.TEST_SUITE == 'critical' }
+                    }
+                    steps {
+                        bat '''
+                            echo ===== RUNNING CRITICAL TESTS =====
+                            "%PYTHON_EXE%" -m pytest -v -m critical ^
+                                --alluredir="%PROJECT_DIR%\\%ALLURE_RESULTS%" ^
+                                --html="%PROJECT_DIR%\\reports\\html\\critical_report.html" ^
+                                --self-contained-html ^
+                                --tb=long ^
+                                %PYTEST_ARGS%
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                bat '''
+                    echo ===== GENERATING ALLURE REPORT =====
+                    "%ALLURE_PATH%" generate "%PROJECT_DIR%\\%ALLURE_RESULTS%" ^
+                        -o "%PROJECT_DIR%\\%ALLURE_REPORT%" --clean
+                '''
+            }
+        }
+
+        stage('Quality Gate Check') {
+            steps {
+                script {
+                    // Check pass rate from history file
+                    def historyFile = "${env.PROJECT_DIR}\\${env.HISTORY_FILE}"
+                    if (fileExists(historyFile)) {
+                        def history = readJSON file: historyFile
+                        def lastRun = history[-1]
+                        def passRate = lastRun.summary.pass_rate
+
+                        echo "Pass Rate: ${passRate}%"
+
+                        if (passRate < Double.parseDouble(env.PASS_RATE_THRESHOLD)) {
+                            currentBuild.result = 'UNSTABLE'
+                            echo "WARNING: Pass rate ${passRate}% below threshold ${env.PASS_RATE_THRESHOLD}%"
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo '===== PIPELINE COMPLETED ====='
+
+            // Archive test reports
+            archiveArtifacts artifacts: 'reports/html/*.html', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'reports/allure-results/**/*', allowEmptyArchive: true
+
+            // Publish Allure report
+            allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [[key: 'allure.report.generate', value: 'true']],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'reports/allure-results']]
+            ])
+        }
+
+        success {
+            echo 'All tests passed successfully!'
+            bat '''
+                echo ===== TEST SUMMARY =====
+                echo Build: ${env.BUILD_NUMBER}
+                echo Status: SUCCESS
+                echo Reports: ${env.HTML_REPORT}
+            '''
+        }
+
+        failure {
+            echo 'Tests failed - check reports for details'
+
+            // Send notification (configure your notification channel)
+            script {
+                echo "FAILURE: Build ${env.BUILD_NUMBER} failed"
+                // Example: emailNotification()
+                // Example: slackSend(channel: '#qa-alerts', message: "Build failed: ${env.BUILD_URL}")
+            }
+        }
+
+        unstable {
+            echo 'Build unstable - quality gate threshold not met'
+        }
+    }
+}

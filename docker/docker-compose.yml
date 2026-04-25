@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+
+  test-runner:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ..:/app
+    working_dir: /app
+    command: pytest -v --alluredir=reports/allure-results
+
+  allure-report:
+    image: frankescobar/allure-docker-service
+    ports:
+      - "5050:5050"
+    volumes:
+      - ../reports/allure-results:/app/allure-results
+      - ../reports/allure-report:/app/default-reports

@@ -1,0 +1,21 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl unzip openjdk-17-jre \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Allure CLI
+RUN curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/latest/download/allure-2.27.0.zip \
+    && unzip allure.zip -d /opt/ \
+    && ln -s /opt/allure-2.27.0/bin/allure /usr/bin/allure \
+    && rm allure.zip
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+CMD ["pytest", "-v", "--alluredir=reports/allure-results"]
