@@ -10,6 +10,8 @@ REM Configuration
 set PYTHON_EXE=venv\Scripts\python.exe
 set PROJECT_DIR=%~dp0..
 set ALLURE_RESULTS=%PROJECT_DIR%\reports\allure-results
+set ALLURE_REPORT=%PROJECT_DIR%\reports\allure-report
+set ALLURE_HISTORY_TMP=%PROJECT_DIR%\reports\allure-history-tmp
 set HTML_REPORT=%PROJECT_DIR%\reports\html
 
 REM Default options
@@ -39,8 +41,19 @@ REM Clean previous results
 echo ============================================================================
 echo Cleaning previous test results...
 echo ============================================================================
+REM Preserve allure history before cleaning results
+if exist "%ALLURE_HISTORY_TMP%" rmdir /s /q "%ALLURE_HISTORY_TMP%"
+if exist "%ALLURE_REPORT%\history" (
+    echo Preserving Allure history from previous report...
+    xcopy "%ALLURE_REPORT%\history" "%ALLURE_HISTORY_TMP%\" /E /I /Y >nul
+)
 if exist "%ALLURE_RESULTS%" rmdir /s /q "%ALLURE_RESULTS%"
 mkdir "%ALLURE_RESULTS%"
+if exist "%ALLURE_HISTORY_TMP%" (
+    echo Restoring Allure history into new results...
+    xcopy "%ALLURE_HISTORY_TMP%" "%ALLURE_RESULTS%\history\" /E /I /Y >nul
+    rmdir /s /q "%ALLURE_HISTORY_TMP%"
+)
 
 REM Run tests
 echo ============================================================================

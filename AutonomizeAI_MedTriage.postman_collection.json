@@ -1,0 +1,448 @@
+{
+  "info": {
+    "name": "Autonomize AI — MedTriage Test Suite",
+    "_postman_id": "autonomize-medtriage-001",
+    "description": "Mirrors all 11 test cases from test_model_validation.py. Base URL: http://localhost:11434",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:11434",
+      "type": "string"
+    },
+    {
+      "key": "model",
+      "value": "qwen3:0.6b",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "GET api/tags — Ollama Health + Model List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tags",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tags"]
+            },
+            "description": "Verify Ollama is running and the model is pulled."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const body = pm.response.json();",
+                  "const models = (body.models || []).map(m => m.name);",
+                  "pm.test('Model is available', () => {",
+                  "    pm.expect(models.some(m => m.includes(pm.collectionVariables.get('model')))).to.be.true;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Critical — Age-Based Risk",
+      "item": [
+        {
+          "name": "age 65 → high",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Age 65 > 60 rule → risk_level must be high.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 65, \\\"symptoms\\\": [], \\\"history\\\": []}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == high', () => pm.expect(p.risk_level).to.equal('high'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "age 18 → low",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Age 18 ≤ 40, no critical symptoms → risk_level must be low.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 18, \\\"symptoms\\\": [], \\\"history\\\": []}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == low', () => pm.expect(p.risk_level).to.equal('low'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "age 60 → low (boundary)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Age exactly 60 is the boundary — must return low, not high.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 60, \\\"symptoms\\\": [], \\\"history\\\": []}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == low', () => pm.expect(p.risk_level).to.equal('low'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "age 61 → high (boundary)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Age 61 just crosses the boundary — must return high.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 61, \\\"symptoms\\\": [], \\\"history\\\": []}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == high', () => pm.expect(p.risk_level).to.equal('high'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Critical — Chest Pain Safety",
+      "item": [
+        {
+          "name": "chest pain → high (exact match)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Chest pain must always override age rule and return high.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 37, \\\"symptoms\\\": [\\\"chest pain\\\", \\\"nausea\\\"], \\\"history\\\": [\\\"hypertension\\\"]}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == high', () => pm.expect(p.risk_level).to.equal('high'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "chest pain → high (whitespace variation)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "'  Chest Pain  ' with surrounding whitespace must still trigger high risk.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 37, \\\"symptoms\\\": [\\\"  Chest Pain  \\\", \\\"nausea\\\"], \\\"history\\\": [\\\"hypertension\\\"]}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == high', () => pm.expect(p.risk_level).to.equal('high'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Regression — Medium Risk",
+      "item": [
+        {
+          "name": "age 44 + headache → medium",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Mid-age with mild symptoms → risk_level must be medium.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 44, \\\"symptoms\\\": [\\\"headache\\\"], \\\"history\\\": [\\\"seasonal allergy\\\"]}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == medium', () => pm.expect(p.risk_level).to.equal('medium'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Critical — Validation Errors",
+      "item": [
+        {
+          "name": "age = 'sixty' → unknown or error",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Non-numeric string age → risk_level must be unknown or error key must be present.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": \\\"sixty\\\", \\\"symptoms\\\": [], \\\"history\\\": []}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == unknown OR error present', () => {",
+                  "    pm.expect(p.risk_level === 'unknown' || 'error' in p).to.be.true;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "age = '52' (numeric string) → unknown or error",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "Numeric string age must still be caught as Invalid data type for age.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": \\\"52\\\", \\\"symptoms\\\": [\\\"fatigue\\\"], \\\"history\\\": []}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == unknown OR Invalid data type in error', () => {",
+                  "    pm.expect(p.risk_level === 'unknown' || String(p.error || '').includes('Invalid data type')).to.be.true;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "symptoms as string → unknown or error",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "symptoms passed as a plain string instead of a list → Invalid data type for symptoms.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 52, \\\"symptoms\\\": \\\"fatigue\\\", \\\"history\\\": []}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == unknown OR Invalid data type in error', () => {",
+                  "    pm.expect(p.risk_level === 'unknown' || String(p.error || '').includes('Invalid data type')).to.be.true;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "history field missing → unknown or error",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/chat",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat"]
+            },
+            "description": "'history' key entirely absent from payload → risk_level = unknown or error present.",
+            "body": {
+              "mode": "raw",
+              "options": { "raw": { "language": "json" } },
+              "raw": "{\n  \"model\": \"{{model}}\",\n  \"stream\": false,\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Autonomize AI, a trained clinical risk-assessment AI assistant. Your ONLY job is to evaluate patient data and return a JSON risk assessment. Rules you must NEVER break: 1. Respond with RAW JSON only, no markdown, no code fences, no explanation. 2. The JSON must always contain a risk_level key whose value is exactly one of: low, medium, or high. 3. Apply these deterministic clinical rules: Any symptom containing chest pain (case-insensitive, trimmed) returns high. age > 60 with no overriding symptom rule returns high. age between 40 and 60 with minor symptoms like headache or allergy returns medium. age 40 or below with no critical symptoms returns low. 4. If the history field is missing from the input, add an error key with a validation note and set risk_level to unknown. 5. If age is not an integer, set risk_level to unknown and set error to Invalid data type for age. 6. If symptoms is not a list, set risk_level to unknown and set error to Invalid data type for symptoms. Example valid response: {\\\"risk_level\\\": \\\"high\\\", \\\"reason\\\": \\\"chest pain detected\\\"}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{\\\"age\\\": 52, \\\"symptoms\\\": [\\\"fatigue\\\"]}\"\n    }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "const raw = pm.response.json().message.content.replace(/```json|```/g, '').trim();",
+                  "let p; try { p = JSON.parse(raw); } catch(e) { pm.test('Valid JSON', () => { throw new Error('Non-JSON: ' + raw); }); return; }",
+                  "pm.test('risk_level == unknown OR error present', () => {",
+                  "    pm.expect(p.risk_level === 'unknown' || 'error' in p).to.be.true;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    }
+  ]
+}

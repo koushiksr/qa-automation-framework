@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Dashboard - 2026-04-25 16:17:57</title>
+    <title>Test Dashboard - 2026-04-25 14:50:05</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -62,20 +62,20 @@
 <body>
     <div class="container">
         <h1>🧪 Test Automation Dashboard</h1>
-        <p style="text-align: center; color: #888;">Generated: 2026-04-25 16:17:57</p>
+        <p style="text-align: center; color: #888;">Generated: 2026-04-25 14:50:05</p>
 
         <div class="summary-cards">
             <div class="card total">
                 <h3>Total Tests</h3>
-                <div class="value">26</div>
+                <div class="value">11</div>
             </div>
             <div class="card passed">
                 <h3>Passed</h3>
-                <div class="value">20</div>
+                <div class="value">2</div>
             </div>
             <div class="card failed">
                 <h3>Failed</h3>
-                <div class="value">0</div>
+                <div class="value">9</div>
             </div>
             <div class="card skipped">
                 <h3>Skipped</h3>
@@ -83,11 +83,11 @@
             </div>
             <div class="card pass-rate">
                 <h3>Pass Rate</h3>
-                <div class="value">76.92%</div>
+                <div class="value">18.18%</div>
             </div>
             <div class="card duration">
                 <h3>Total Duration</h3>
-                <div class="value">240.2s</div>
+                <div class="value">304.6s</div>
             </div>
         </div>
 
@@ -122,8 +122,8 @@
                     
             <tr>
                 <td>smoke</td>
-                <td>53</td>
-                <td>53</td>
+                <td>50</td>
+                <td>50</td>
                 <td>0</td>
                 <td>
                     <div class="progress-bar">
@@ -131,55 +131,55 @@
                     </div>
                     100.0%
                 </td>
-                <td>0.583s</td>
+                <td>0.617s</td>
             </tr>
             
             <tr>
                 <td>regression</td>
-                <td>177</td>
-                <td>154</td>
-                <td>23</td>
+                <td>138</td>
+                <td>133</td>
+                <td>5</td>
                 <td>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 87.01%; background: #ff9800"></div>
+                        <div class="progress" style="width: 96.38%; background: #4caf50"></div>
                     </div>
-                    87.01%
+                    96.38%
                 </td>
-                <td>4.911s</td>
+                <td>1.069s</td>
             </tr>
             
             <tr>
                 <td>critical</td>
-                <td>220</td>
-                <td>197</td>
-                <td>23</td>
+                <td>157</td>
+                <td>151</td>
+                <td>6</td>
                 <td>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 89.55%; background: #ff9800"></div>
+                        <div class="progress" style="width: 96.18%; background: #4caf50"></div>
                     </div>
-                    89.55%
+                    96.18%
                 </td>
-                <td>3.581s</td>
+                <td>0.951s</td>
             </tr>
             
             <tr>
                 <td>api</td>
-                <td>242</td>
-                <td>219</td>
-                <td>23</td>
+                <td>230</td>
+                <td>213</td>
+                <td>17</td>
                 <td>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 90.5%; background: #4caf50"></div>
+                        <div class="progress" style="width: 92.61%; background: #4caf50"></div>
                     </div>
-                    90.5%
+                    92.61%
                 </td>
-                <td>0.171s</td>
+                <td>0.177s</td>
             </tr>
             
             <tr>
                 <td>ui</td>
-                <td>120</td>
-                <td>120</td>
+                <td>108</td>
+                <td>108</td>
                 <td>0</td>
                 <td>
                     <div class="progress-bar">
@@ -187,13 +187,13 @@
                     </div>
                     100.0%
                 </td>
-                <td>0.071s</td>
+                <td>0.079s</td>
             </tr>
             
             <tr>
                 <td>integration</td>
-                <td>121</td>
-                <td>121</td>
+                <td>103</td>
+                <td>103</td>
                 <td>0</td>
                 <td>
                     <div class="progress-bar">
@@ -201,7 +201,7 @@
                     </div>
                     100.0%
                 </td>
-                <td>0.118s</td>
+                <td>0.139s</td>
             </tr>
             
             <tr>
@@ -245,245 +245,137 @@
                     </thead>
                     <tbody>
                         
-                <tr class="test-row passed">
-                    <td>tests/agent/test_agent_flow.py::test_agent_extraction_schema_valid_record</td>
-                    <td><span class="marker marker-critical">critical</span><span class="marker marker-integration">integration</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/agent/test_agent_flow.py::test_agent_extraction_schema_rejects_unsafe_payloads[raw_record0-invalid type for age]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-critical">critical</span><span class="marker marker-integration">integration</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/agent/test_agent_flow.py::test_agent_extraction_schema_rejects_unsafe_payloads[raw_record1-age out of acceptable range]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-critical">critical</span><span class="marker marker-integration">integration</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/agent/test_agent_flow.py::test_agent_extraction_schema_rejects_unsafe_payloads[raw_record2-symptoms must be list[str]]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-critical">critical</span><span class="marker marker-integration">integration</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/agent/test_agent_flow.py::test_agent_extraction_schema_rejects_unsafe_payloads[raw_record3-patient_id format must match PT-<digits>]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-critical">critical</span><span class="marker marker-integration">integration</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/agent/test_agent_flow.py::test_agent_extraction_schema_rejects_unsafe_payloads[raw_record4-source_system must be one of]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-critical">critical</span><span class="marker marker-integration">integration</span></td>
-                    <td>passed</td>
-                    <td>0.000s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row soft_failed">
-                    <td>tests/integration/test_model_integration.py::test_model_integration[case0]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-api">api</span><span class="marker marker-regression">regression</span></td>
-                    <td>soft_failed</td>
-                    <td>0.242s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                <div class="error">Invalid data type</div>
-                
-                <tr class="test-row passed">
-                    <td>tests/integration/test_model_integration.py::test_model_integration[case1]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-api">api</span><span class="marker marker-regression">regression</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/integration/test_model_integration.py::test_model_integration[case2]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-api">api</span><span class="marker marker-regression">regression</span></td>
-                    <td>passed</td>
-                    <td>0.000s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                
-                
-                <tr class="test-row soft_failed">
-                    <td>tests/integration/test_model_integration.py::test_model_integration[case3]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-api">api</span><span class="marker marker-regression">regression</span></td>
-                    <td>soft_failed</td>
-                    <td>0.012s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                <div class="error">Invalid data type</div>
-                
-                <tr class="test-row soft_failed">
-                    <td>tests/integration/test_patient_safety.py::test_no_blank_symptoms</td>
-                    <td><span class="marker marker-critical">critical</span></td>
-                    <td>soft_failed</td>
-                    <td>0.010s</td>
-                    <td>2026-04-25 16:13:55</td>
-                </tr>
-                <div class="error">Invalid data type</div>
-                
-                <tr class="test-row passed">
+                <tr class="test-row failed">
                     <td>tests/model/test_model_validation.py::test_valid_patient_high_risk</td>
                     <td><span class="marker marker-critical">critical</span><span class="marker marker-llm">llm</span></td>
-                    <td>passed</td>
-                    <td>35.504s</td>
-                    <td>2026-04-25 16:14:33</td>
+                    <td>failed</td>
+                    <td>49.618s</td>
+                    <td>2026-04-25 14:45:49</td>
                 </tr>
+                <div class="error">Got: {'risk_level': 'medium', 'error': {'history': 'Missing history data'}}
+assert 'medium' == 'high'
+  
+  [0m[91m- high[39;49;00m[90m[39;49;00m
+  [92m+ medium[39;49;00m[90m[39;49;00m</div>
                 
-                
-                <tr class="test-row passed">
+                <tr class="test-row failed">
                     <td>tests/model/test_model_validation.py::test_invalid_age_type_returns_error</td>
                     <td><span class="marker marker-llm">llm</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:14:33</td>
+                    <td>failed</td>
+                    <td>26.115s</td>
+                    <td>2026-04-25 14:46:15</td>
                 </tr>
+                <div class="error">Expected error or unknown risk_level, got: {'risk_level': 'medium', 'reason': 'age between 40–60 with minor symptoms'}
+assert ('medium' == 'unknown'
+  
+  [0m[91m- unknown[39;49;00m[90m[39;49;00m
+  [92m+ medium[39;49;00m[90m[39;49;00m or 'error' in {'reason': 'age between 40–60 with minor symptoms', 'risk_level': 'medium'})</div>
                 
-                
-                <tr class="test-row soft_failed">
+                <tr class="test-row failed">
                     <td>tests/model/test_model_validation.py::test_age_boundary_classification[patient_data0-low]</td>
                     <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-regression">regression</span><span class="marker marker-llm">llm</span></td>
-                    <td>soft_failed</td>
-                    <td>63.115s</td>
-                    <td>2026-04-25 16:15:36</td>
+                    <td>failed</td>
+                    <td>35.557s</td>
+                    <td>2026-04-25 14:46:51</td>
+                </tr>
+                <div class="error">Input: {'age': 18, 'symptoms': [], 'history': []} | Expected: low | Got: {'error': {'history': 'history'}, 'risk_level': 'medium'}
+assert 'medium' == 'low'
+  
+  [0m[91m- low[39;49;00m[90m[39;49;00m
+  [92m+ medium[39;49;00m[90m[39;49;00m</div>
+                
+                <tr class="test-row failed">
+                    <td>tests/model/test_model_validation.py::test_age_boundary_classification[patient_data1-low]</td>
+                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-regression">regression</span><span class="marker marker-llm">llm</span></td>
+                    <td>failed</td>
+                    <td>62.507s</td>
+                    <td>2026-04-25 14:47:53</td>
                 </tr>
                 <div class="error">HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)</div>
                 
-                <tr class="test-row soft_failed">
-                    <td>tests/model/test_model_validation.py::test_age_boundary_classification[patient_data1-low]</td>
-                    <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-regression">regression</span><span class="marker marker-llm">llm</span></td>
-                    <td>soft_failed</td>
-                    <td>26.861s</td>
-                    <td>2026-04-25 16:16:03</td>
-                </tr>
-                <div class="error">Input: {'age': 60, 'symptoms': [], 'history': []} | Expected: low | Got: {'risk_level': 'unknown', 'error': 'symptoms is an empty array, which is a list, but no symptoms present'}
-assert 'unknown' == 'low'
-  
-  - low
-  + unknown</div>
-                
-                <tr class="test-row passed">
+                <tr class="test-row failed">
                     <td>tests/model/test_model_validation.py::test_age_boundary_classification[patient_data2-high]</td>
                     <td><span class="marker marker-parametrize">parametrize</span><span class="marker marker-regression">regression</span><span class="marker marker-llm">llm</span></td>
-                    <td>passed</td>
-                    <td>23.620s</td>
-                    <td>2026-04-25 16:16:26</td>
+                    <td>failed</td>
+                    <td>18.877s</td>
+                    <td>2026-04-25 14:48:12</td>
                 </tr>
+                <div class="error">Input: {'age': 61, 'symptoms': [], 'history': []} | Expected: high | Got: {'risk_level': 'unknown', 'error': {'history': 'missing', 'symptoms': 'missing'}}
+assert 'unknown' == 'high'
+  
+  [0m[91m- high[39;49;00m[90m[39;49;00m
+  [92m+ unknown[39;49;00m[90m[39;49;00m</div>
                 
-                
-                <tr class="test-row soft_failed">
+                <tr class="test-row failed">
                     <td>tests/model/test_model_validation.py::test_chest_pain_is_always_high_risk</td>
                     <td><span class="marker marker-critical">critical</span><span class="marker marker-llm">llm</span></td>
-                    <td>soft_failed</td>
-                    <td>44.800s</td>
-                    <td>2026-04-25 16:17:11</td>
+                    <td>failed</td>
+                    <td>16.418s</td>
+                    <td>2026-04-25 14:48:29</td>
+                </tr>
+                <div class="error">Got: {'risk_level': 'medium', 'reason': 'chest pain detected'}
+assert 'medium' == 'high'
+  
+  [0m[91m- high[39;49;00m[90m[39;49;00m
+  [92m+ medium[39;49;00m[90m[39;49;00m</div>
+                
+                <tr class="test-row failed">
+                    <td>tests/model/test_model_validation.py::test_chest_pain_with_whitespace_variation_is_still_high_risk</td>
+                    <td><span class="marker marker-critical">critical</span><span class="marker marker-llm">llm</span></td>
+                    <td>failed</td>
+                    <td>25.820s</td>
+                    <td>2026-04-25 14:48:54</td>
                 </tr>
                 <div class="error">Got: {'risk_level': 'medium'}
 assert 'medium' == 'high'
   
-  - high
-  + medium</div>
-                
-                <tr class="test-row passed">
-                    <td>tests/model/test_model_validation.py::test_chest_pain_with_whitespace_variation_is_still_high_risk</td>
-                    <td><span class="marker marker-critical">critical</span><span class="marker marker-llm">llm</span></td>
-                    <td>passed</td>
-                    <td>23.741s</td>
-                    <td>2026-04-25 16:17:35</td>
-                </tr>
-                
+  [0m[91m- high[39;49;00m[90m[39;49;00m
+  [92m+ medium[39;49;00m[90m[39;49;00m</div>
                 
                 <tr class="test-row passed">
                     <td>tests/model/test_model_validation.py::test_non_critical_case_is_medium_risk</td>
                     <td><span class="marker marker-regression">regression</span><span class="marker marker-llm">llm</span></td>
                     <td>passed</td>
-                    <td>22.236s</td>
-                    <td>2026-04-25 16:17:57</td>
+                    <td>20.921s</td>
+                    <td>2026-04-25 14:49:15</td>
                 </tr>
                 
                 
-                <tr class="test-row passed">
+                <tr class="test-row failed">
                     <td>tests/model/test_model_validation.py::test_missing_history_field_returns_error</td>
                     <td><span class="marker marker-critical">critical</span><span class="marker marker-llm">llm</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:17:57</td>
+                    <td>failed</td>
+                    <td>10.598s</td>
+                    <td>2026-04-25 14:49:26</td>
                 </tr>
+                <div class="error">Expected validation error for missing 'history', got: {'risk_level': 'high', 'reason': 'chest pain detected'}
+assert ('high' == 'unknown'
+  
+  [0m[91m- unknown[39;49;00m[90m[39;49;00m
+  [92m+ high[39;49;00m[90m[39;49;00m or 'error' in {'reason': 'chest pain detected', 'risk_level': 'high'})</div>
                 
-                
-                <tr class="test-row passed">
+                <tr class="test-row failed">
                     <td>tests/model/test_model_validation.py::test_string_age_returns_type_error</td>
                     <td><span class="marker marker-critical">critical</span><span class="marker marker-llm">llm</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:17:57</td>
+                    <td>failed</td>
+                    <td>19.178s</td>
+                    <td>2026-04-25 14:49:45</td>
                 </tr>
-                
+                <div class="error">Got: {'risk_level': 'medium', 'reason': 'age 52 with minor symptoms (fatigue), no critical symptoms, and no history provided'}
+assert ('medium' == 'unknown'
+  
+  [0m[91m- unknown[39;49;00m[90m[39;49;00m
+  [92m+ medium[39;49;00m[90m[39;49;00m or 'Invalid data type' in '')
+ +  where '' = str('')
+ +    where '' = <built-in method get of dict object at 0x000001FFFCCE6F00>('error', '')
+ +      where <built-in method get of dict object at 0x000001FFFCCE6F00> = {'reason': 'age 52 with minor symptoms (fatigue), no critical symptoms, and no history provided', 'risk_level': 'medium'}.get</div>
                 
                 <tr class="test-row passed">
                     <td>tests/model/test_model_validation.py::test_string_symptoms_instead_of_list_returns_type_error</td>
                     <td><span class="marker marker-critical">critical</span><span class="marker marker-llm">llm</span></td>
                     <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:17:57</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/ui/test_ui_validation.py::test_invalid_file_upload_rejected_with_clear_message</td>
-                    <td><span class="marker marker-critical">critical</span><span class="marker marker-ui">ui</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:17:57</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/ui/test_ui_validation.py::test_large_file_upload_rejected</td>
-                    <td><span class="marker marker-regression">regression</span><span class="marker marker-ui">ui</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:17:57</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/ui/test_ui_validation.py::test_too_many_pages_upload_rejected</td>
-                    <td><span class="marker marker-critical">critical</span><span class="marker marker-ui">ui</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:17:57</td>
-                </tr>
-                
-                
-                <tr class="test-row passed">
-                    <td>tests/ui/test_ui_validation.py::test_valid_chart_upload_is_accepted</td>
-                    <td><span class="marker marker-smoke">smoke</span><span class="marker marker-ui">ui</span></td>
-                    <td>passed</td>
-                    <td>0.001s</td>
-                    <td>2026-04-25 16:17:57</td>
+                    <td>18.940s</td>
+                    <td>2026-04-25 14:50:04</td>
                 </tr>
                 
                 
@@ -507,72 +399,6 @@ assert 'medium' == 'high'
                     </thead>
                     <tbody>
                         
-            <tr>
-                <td>20260425_161757</td>
-                <td>2026-04-25 16:17:57</td>
-                <td>26</td>
-                <td class="passed">20</td>
-                <td class="failed">0</td>
-                <td>0</td>
-                <td>76.92%</td>
-                <td>240.16s</td>
-            </tr>
-            
-            <tr>
-                <td>20260425_160134</td>
-                <td>2026-04-25 16:01:34</td>
-                <td>26</td>
-                <td class="passed">20</td>
-                <td class="failed">6</td>
-                <td>0</td>
-                <td>76.92%</td>
-                <td>318.57s</td>
-            </tr>
-            
-            <tr>
-                <td>20260425_152029</td>
-                <td>2026-04-25 15:20:29</td>
-                <td>11</td>
-                <td class="passed">7</td>
-                <td class="failed">4</td>
-                <td>0</td>
-                <td>63.64%</td>
-                <td>224.97s</td>
-            </tr>
-            
-            <tr>
-                <td>20260425_151614</td>
-                <td>2026-04-25 15:16:14</td>
-                <td>11</td>
-                <td class="passed">7</td>
-                <td class="failed">4</td>
-                <td>0</td>
-                <td>63.64%</td>
-                <td>155.54s</td>
-            </tr>
-            
-            <tr>
-                <td>20260425_150817</td>
-                <td>2026-04-25 15:08:17</td>
-                <td>11</td>
-                <td class="passed">6</td>
-                <td class="failed">5</td>
-                <td>0</td>
-                <td>54.55%</td>
-                <td>149.23s</td>
-            </tr>
-            
-            <tr>
-                <td>20260425_145657</td>
-                <td>2026-04-25 14:56:57</td>
-                <td>26</td>
-                <td class="passed">16</td>
-                <td class="failed">10</td>
-                <td>0</td>
-                <td>61.54%</td>
-                <td>313.94s</td>
-            </tr>
-            
             <tr>
                 <td>20260425_145004</td>
                 <td>2026-04-25 14:50:04</td>
@@ -617,6 +443,72 @@ assert 'medium' == 'high'
                 <td>0.02s</td>
             </tr>
             
+            <tr>
+                <td>20260425_130921</td>
+                <td>2026-04-25 13:09:21</td>
+                <td>8</td>
+                <td class="passed">8</td>
+                <td class="failed">0</td>
+                <td>0</td>
+                <td>100.0%</td>
+                <td>0.01s</td>
+            </tr>
+            
+            <tr>
+                <td>20260425_130049</td>
+                <td>2026-04-25 13:00:49</td>
+                <td>36</td>
+                <td class="passed">35</td>
+                <td class="failed">0</td>
+                <td>1</td>
+                <td>97.22%</td>
+                <td>4.31s</td>
+            </tr>
+            
+            <tr>
+                <td>20260425_125946</td>
+                <td>2026-04-25 12:59:46</td>
+                <td>17</td>
+                <td class="passed">17</td>
+                <td class="failed">0</td>
+                <td>0</td>
+                <td>100.0%</td>
+                <td>0.02s</td>
+            </tr>
+            
+            <tr>
+                <td>20260425_121834</td>
+                <td>2026-04-25 12:18:34</td>
+                <td>24</td>
+                <td class="passed">23</td>
+                <td class="failed">0</td>
+                <td>1</td>
+                <td>95.83%</td>
+                <td>4.08s</td>
+            </tr>
+            
+            <tr>
+                <td>20260425_121811</td>
+                <td>2026-04-25 12:18:11</td>
+                <td>24</td>
+                <td class="passed">23</td>
+                <td class="failed">0</td>
+                <td>1</td>
+                <td>95.83%</td>
+                <td>4.07s</td>
+            </tr>
+            
+            <tr>
+                <td>20260425_121811</td>
+                <td>2026-04-25 12:18:11</td>
+                <td>24</td>
+                <td class="passed">23</td>
+                <td class="failed">0</td>
+                <td>1</td>
+                <td>95.83%</td>
+                <td>4.11s</td>
+            </tr>
+            
                     </tbody>
                 </table>
             </div>
@@ -648,9 +540,9 @@ assert 'medium' == 'high'
             event.target.classList.add('active');
         }
 
-        const trendLabels = ["20260425_131056", "20260425_133131", "20260425_135651", "20260425_145004", "20260425_145657", "20260425_150817", "20260425_151614", "20260425_152029", "20260425_160134", "20260425_161757"];
-        const passRateData = [100.0, 100.0, 88.46, 18.18, 61.54, 54.55, 63.64, 63.64, 76.92, 76.92];
-        const durationData = [0.02, 0.02, 0.2, 304.55, 313.94, 149.23, 155.54, 224.97, 318.57, 240.16];
+        const trendLabels = ["20260425_121811", "20260425_121811", "20260425_121834", "20260425_125946", "20260425_130049", "20260425_130921", "20260425_131056", "20260425_133131", "20260425_135651", "20260425_145004"];
+        const passRateData = [95.83, 95.83, 95.83, 100.0, 97.22, 100.0, 100.0, 100.0, 88.46, 18.18];
+        const durationData = [4.11, 4.07, 4.08, 0.02, 4.31, 0.01, 0.02, 0.02, 0.2, 304.55];
 
         new Chart(document.getElementById('passRateChart'), {
             type: 'line',

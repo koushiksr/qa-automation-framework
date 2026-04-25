@@ -5,7 +5,7 @@ pytest --collect-only
 allure generate reports/allure-results -o reports/allure-report --clean
 allure open reports/allure-report
 
-cd docker
+<!-- cd docker
 docker build -t qa-framework .
 
 docker run --rm -v %cd%/..:/app qa-framework #cmd
@@ -16,4 +16,4 @@ docker-compose up --build
 
 docker-compose run test-runner
 
-docker-compose up allure-report
+docker-compose up allure-report -->
